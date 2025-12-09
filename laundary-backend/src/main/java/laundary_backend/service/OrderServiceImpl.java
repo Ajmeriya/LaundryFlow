@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 public class OrderServiceImpl implements OrderService
 {
 
-    OrderRepo orderRepo;
 
-/// Constructor  Injection
     public OrderServiceImpl(OrderRepo orderRepo)
     {
         this.orderRepo = orderRepo;
