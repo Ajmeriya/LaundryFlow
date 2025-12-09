@@ -15,9 +15,12 @@ public interface OrderRepo extends JpaRepository<Order, Long>
     List<Order> findByShop_Sid(long sid);
 =======
 @Repository
+<<<<<<< HEAD
 public interface OrderRepo extends JpaRepository<Order, Long>
 {
 
 >>>>>>> 0113130 (Created the Create order API)
+=======
+>>>>>>> aaaf9ba (order API complate)
 }
 

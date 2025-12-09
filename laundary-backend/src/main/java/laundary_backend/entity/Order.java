@@ -14,6 +14,7 @@ import java.util.List;
 
 @Entity
 <<<<<<< HEAD
+<<<<<<< HEAD
 @Table(name = "orders")
 @Data
 public class Order {
@@ -58,34 +59,26 @@ public class Order {
     }
 =======
 @Table(name ="orders")
+=======
+@Table(name = "orders")
+>>>>>>> aaaf9ba (order API complate)
 @Data
-public class Order
-{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long orderId;
 
-    @OneToMany(mappedBy ="order", cascade = CascadeType.ALL)
-    List<Item> items;
 
-    long cid;
 
-    long sid;
 
-    @OneToMany(mappedBy ="order", cascade = CascadeType.ALL)
-    List<Service> services;
 
-    Status status = Status.PLACED;
 
-    Date orderDate;
 
-    String address;
 
-    String specialInstructions;
 
-    public long getOrderId() {
-        return orderId;
+
+        }
+        }
     }
+<<<<<<< HEAD
 
     public void setOrderId(long orderId) {
         this.orderId = orderId;
@@ -165,5 +158,7 @@ public class Order
 
     double totalAmount;
 >>>>>>> 0113130 (Created the Create order API)
+=======
+>>>>>>> aaaf9ba (order API complate)
 }
 

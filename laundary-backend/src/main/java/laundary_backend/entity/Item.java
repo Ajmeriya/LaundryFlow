@@ -3,16 +3,20 @@ package laundary_backend.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 import java.util.ArrayList;
 =======
 import org.springframework.web.multipart.MultipartFile;
+=======
+>>>>>>> aaaf9ba (order API complate)
 
 >>>>>>> 0113130 (Created the Create order API)
 import java.util.List;
 
 @Entity
 @Data
+<<<<<<< HEAD
 <<<<<<< HEAD
 @Table(name = "item")
 public class Item {
@@ -21,6 +25,9 @@ public class Item {
 public class Item
 {
 >>>>>>> 0113130 (Created the Create order API)
+=======
+@Table(name = "item")
+>>>>>>> aaaf9ba (order API complate)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long itemId;
@@ -42,17 +49,10 @@ public class Item
     private List<String> images = new ArrayList<>();
 =======
 
-    String name;
 
-    int count;
-
-    double price;
 
     @ManyToOne
-    @JoinColumn(name ="orderId")
-    Order order;
-
-    private List<String> images;
+    @JoinColumn(name = "orderId")
 
 >>>>>>> 0113130 (Created the Create order API)
 }

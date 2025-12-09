@@ -21,6 +21,7 @@ public class OrderServiceImpl implements OrderService
 {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private final OrderRepo orderRepo;
 
 <<<<<<< HEAD
@@ -32,7 +33,13 @@ public class OrderServiceImpl implements OrderService
 
 /// Constructor  Injection
 >>>>>>> 0113130 (Created the Create order API)
+<<<<<<< HEAD
 >>>>>>> 7e02b64 (ok)
+=======
+=======
+
+>>>>>>> aaaf9ba (order API complate)
+>>>>>>> 47485aa (ok)
     public OrderServiceImpl(OrderRepo orderRepo)
     {
         this.orderRepo = orderRepo;
