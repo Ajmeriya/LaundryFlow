@@ -1,17 +1,38 @@
 package laundary_backend.service;
 
 import laundary_backend.entity.Order;
+<<<<<<< HEAD
 import laundary_backend.enums.Status;
 import laundary_backend.repository.OrderRepo;
 import org.springframework.stereotype.Service;
 
+<<<<<<< HEAD
+=======
+import java.util.List;
+
+=======
+import laundary_backend.repository.OrderRepo;
+import org.springframework.stereotype.Service;
+
+>>>>>>> 0113130 (Created the Create order API)
+>>>>>>> 7e02b64 (ok)
 @Service
 public class OrderServiceImpl implements OrderService
 {
 
+<<<<<<< HEAD
     private final OrderRepo orderRepo;
 
+<<<<<<< HEAD
 /// Constructor  Injection
+=======
+    //Constructor  Injection
+=======
+    OrderRepo orderRepo;
+
+/// Constructor  Injection
+>>>>>>> 0113130 (Created the Create order API)
+>>>>>>> 7e02b64 (ok)
     public OrderServiceImpl(OrderRepo orderRepo)
     {
         this.orderRepo = orderRepo;
@@ -22,6 +43,7 @@ public class OrderServiceImpl implements OrderService
     {
         System.out.println(order);
         return orderRepo.save(order);
+<<<<<<< HEAD
     }
 
     @Override
@@ -50,5 +72,9 @@ public class OrderServiceImpl implements OrderService
     }
 
 
+=======
+
+    }
+>>>>>>> 0113130 (Created the Create order API)
 }
 
