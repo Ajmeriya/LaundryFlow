@@ -1,20 +1,17 @@
 package laundary_backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import laundary_backend.enums.Status;
 import lombok.Data;
+import lombok.ToString;
 
-<<<<<<< HEAD
 import java.time.Instant;
 import java.util.ArrayList;
-=======
->>>>>>> 0113130 (Created the Create order API)
 import java.util.Date;
 import java.util.List;
 
 @Entity
-<<<<<<< HEAD
-<<<<<<< HEAD
 @Table(name = "orders")
 @Data
 public class Order {
@@ -24,16 +21,22 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "cid", nullable = false)
+    @ToString.Exclude
     private Customer customer;
 
     @ManyToOne
     @JoinColumn(name = "sid")
+    @ToString.Exclude
     private Shop shop;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    @ToString.Exclude
     private List<Item> items = new ArrayList<>();
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    @ToString.Exclude
     private List<Service> services = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
@@ -57,108 +60,5 @@ public class Order {
             status = Status.PLACED;
         }
     }
-=======
-@Table(name ="orders")
-=======
-@Table(name = "orders")
->>>>>>> aaaf9ba (order API complate)
-@Data
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-
-
-
-
-
-
-
-
-
-        }
-        }
-    }
-<<<<<<< HEAD
-
-    public void setOrderId(long orderId) {
-        this.orderId = orderId;
-    }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
-
-    public long getCid() {
-        return cid;
-    }
-
-    public void setCid(long cid) {
-        this.cid = cid;
-    }
-
-    public long getSid() {
-        return sid;
-    }
-
-    public void setSid(long sid) {
-        this.sid = sid;
-    }
-
-    public List<Service> getServices() {
-        return services;
-    }
-
-    public void setServices(List<Service> services) {
-        this.services = services;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public Date getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getSpecialInstructions() {
-        return specialInstructions;
-    }
-
-    public void setSpecialInstructions(String specialInstructions) {
-        this.specialInstructions = specialInstructions;
-    }
-
-    public double getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(double totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
-    double totalAmount;
->>>>>>> 0113130 (Created the Create order API)
-=======
->>>>>>> aaaf9ba (order API complate)
 }
 

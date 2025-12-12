@@ -1,9 +1,9 @@
 package laundary_backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
-<<<<<<< HEAD
-<<<<<<< HEAD
+import lombok.ToString;
 
 @Entity
 @Table(name = "service")
@@ -16,31 +16,11 @@ public class Service {
 
     @ManyToOne
     @JoinColumn(name = "orderId")
+    @JsonBackReference
+    @ToString.Exclude
     private Order order;
 
     private String name;
     private double price;
-=======
-import org.aspectj.weaver.ast.Or;
-=======
->>>>>>> aaaf9ba (order API complate)
-
-@Entity
-@Table(name = "service")
-@Data
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    @ManyToOne
-    @JoinColumn(name = "orderId")
-
-<<<<<<< HEAD
-
-    String name;
-    double price;
->>>>>>> 0113130 (Created the Create order API)
-=======
->>>>>>> aaaf9ba (order API complate)
 }
 

@@ -1,38 +1,21 @@
 package laundary_backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
-<<<<<<< HEAD
-<<<<<<< HEAD
+import lombok.ToString;
 
 import java.util.ArrayList;
-=======
-import org.springframework.web.multipart.MultipartFile;
-=======
->>>>>>> aaaf9ba (order API complate)
-
->>>>>>> 0113130 (Created the Create order API)
 import java.util.List;
 
 @Entity
 @Data
-<<<<<<< HEAD
-<<<<<<< HEAD
 @Table(name = "item")
 public class Item {
-=======
-@Table(name ="item")
-public class Item
-{
->>>>>>> 0113130 (Created the Create order API)
-=======
-@Table(name = "item")
->>>>>>> aaaf9ba (order API complate)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long itemId;
 
-<<<<<<< HEAD
     private String name;
 
     private int count;
@@ -41,19 +24,13 @@ public class Item
 
     @ManyToOne
     @JoinColumn(name = "orderId")
+    @JsonBackReference
+    @ToString.Exclude
     private Order order;
 
     @ElementCollection
     @CollectionTable(name = "item_images", joinColumns = @JoinColumn(name = "item_id"))
     @Column(name = "image_url")
     private List<String> images = new ArrayList<>();
-=======
-
-
-
-    @ManyToOne
-    @JoinColumn(name = "orderId")
-
->>>>>>> 0113130 (Created the Create order API)
 }
 

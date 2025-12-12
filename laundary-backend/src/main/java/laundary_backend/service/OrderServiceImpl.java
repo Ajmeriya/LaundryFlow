@@ -1,56 +1,60 @@
 package laundary_backend.service;
 
+import laundary_backend.entity.Customer;
 import laundary_backend.entity.Order;
-<<<<<<< HEAD
+import laundary_backend.entity.Shop;
 import laundary_backend.enums.Status;
+import laundary_backend.repository.CustomerRepo;
 import laundary_backend.repository.OrderRepo;
+import laundary_backend.repository.ShopRepo;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-<<<<<<< HEAD
-=======
-import java.util.List;
-
-=======
-import laundary_backend.repository.OrderRepo;
-import org.springframework.stereotype.Service;
-
->>>>>>> 0113130 (Created the Create order API)
->>>>>>> 7e02b64 (ok)
 @Service
 public class OrderServiceImpl implements OrderService
 {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     private final OrderRepo orderRepo;
+    private final CustomerRepo customerRepo;
+    private final ShopRepo shopRepo;
 
-<<<<<<< HEAD
-/// Constructor  Injection
-=======
-    //Constructor  Injection
-=======
-    OrderRepo orderRepo;
-
-/// Constructor  Injection
->>>>>>> 0113130 (Created the Create order API)
-<<<<<<< HEAD
->>>>>>> 7e02b64 (ok)
-=======
-=======
-
->>>>>>> aaaf9ba (order API complate)
->>>>>>> 47485aa (ok)
-    public OrderServiceImpl(OrderRepo orderRepo)
+    /// Constructor  Injection
+    public OrderServiceImpl(OrderRepo orderRepo, CustomerRepo customerRepo, ShopRepo shopRepo)
     {
         this.orderRepo = orderRepo;
+        this.customerRepo = customerRepo;
+        this.shopRepo = shopRepo;
     }
 
     @Override
+    @Transactional
     public Order createOrder(Order order)
     {
+        if (order.getCustomer() == null || order.getCustomer().getCid() == 0) {
+            throw new IllegalArgumentException("Customer id is required");
+        }
+        Customer customer = customerRepo.findById(order.getCustomer().getCid())
+                .orElseThrow(() -> new IllegalArgumentException("Customer not found"));
+
+        Shop shop = null;
+        if (order.getShop() != null && order.getShop().getSid() != 0) {
+            shop = shopRepo.findById(order.getShop().getSid())
+                    .orElseThrow(() -> new IllegalArgumentException("Shop not found"));
+        }
+
+        order.setCustomer(customer);
+        order.setShop(shop);
+
+
+        if (order.getItems() != null) {
+            order.getItems().forEach(i -> i.setOrder(order));
+        }
+        if (order.getServices() != null) {
+            order.getServices().forEach(s -> s.setOrder(order));
+        }
+
         System.out.println(order);
         return orderRepo.save(order);
-<<<<<<< HEAD
     }
 
     @Override
@@ -77,11 +81,5 @@ public class OrderServiceImpl implements OrderService
     public java.util.List<Order> getOrdersForShop(long shopId) {
         return orderRepo.findByShop_Sid(shopId);
     }
-
-
-=======
-
-    }
->>>>>>> 0113130 (Created the Create order API)
 }
 

@@ -1,6 +1,5 @@
 package laundary_backend.controllers;
 
-<<<<<<< HEAD
 import laundary_backend.entity.Item;
 import laundary_backend.entity.Order;
 import laundary_backend.entity.Service;
@@ -19,15 +18,12 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    ///  Constructor Injection
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
 
-    /// Create Order
     @PostMapping
     public ResponseEntity<Order> addOrder(@RequestBody Order order) {
-        // Attach back references for cascade save
         if (order.getItems() != null) {
             for (Item item : order.getItems()) {
                 item.setOrder(order);
@@ -110,24 +106,11 @@ public class OrderController {
 
         return totalAmount;
     }
-=======
-import laundary_backend.entity.Order;
-import laundary_backend.service.OrderService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
-@RestController
-
-
-    ///  Constructor Injection
-        this.orderService = orderService;
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, String>> handleBadRequest(IllegalArgumentException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(Map.of("error", ex.getMessage()));
     }
-
-    @PostMapping
-        Order savedOrder = orderService.createOrder(order);
-
-    }
-
->>>>>>> 0113130 (Created the Create order API)
 }
 
